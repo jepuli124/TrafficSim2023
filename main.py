@@ -9,7 +9,7 @@ def moveCarsForward(amount, alist):
 
 
 def GenerateNewCars(alist, blist, clist, a, b, c):
-    r = random.randint(1, 4)
+    r = random.randint(1, 5)
     if r == 1:
         r2 = random.randint(1, 3)
         print("New car(s) (", r2, ") arravied to B", sep="")
@@ -59,6 +59,8 @@ if __name__ == '__main__':
                     x = 0
                     TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
                     Loop -= 1  # time passes when light’s change
+                    TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest, TimeB,
+                                                                                            NumAeast, NumAwest, NumB)
                     print("changing light because someone is waiting on B road")
             elif NumAeast != 0 and NumAwest != 0 and NumB != 0:
                 if TimeB[0] >= changeMultiplier * TimeAeast[0] and TimeB[0] >= changeMultiplier * TimeAwest[0]:
@@ -67,6 +69,8 @@ if __name__ == '__main__':
                     NumAwest, TimeAwest = moveCarsForward(NumAwest, TimeAwest)
                     x = 0
                     Loop -= 1  # time passes when light’s change
+                    TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest, TimeB,
+                                                                                            NumAeast, NumAwest, NumB)
                     TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
                     print("A road, Change light")
                 else:
@@ -81,6 +85,8 @@ if __name__ == '__main__':
                     NumAeast, TimeAeast = moveCarsForward(NumAeast, TimeAeast)
                     x = 0
                     Loop -= 1  # time passes when light’s change
+                    TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest, TimeB,
+                                                                                            NumAeast, NumAwest, NumB)
                     TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
                     print("Next on B road has waited four times longer than next on A road east, Change light")
                 else:
@@ -95,6 +101,8 @@ if __name__ == '__main__':
                     NumAwest, TimeAwest = moveCarsForward(NumAwest, TimeAwest)
                     x = 0
                     Loop -= 1  # time passes when light’s change
+                    TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest, TimeB,
+                                                                                            NumAeast, NumAwest, NumB)
                     TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
                     print("Next on B road has waited four times longer than next on A road west, Change light")
                 else:
@@ -115,6 +123,8 @@ if __name__ == '__main__':
                 if NumAeast != 0 or NumAwest != 0:
                     x = 1
                     TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
+                    TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest, TimeB,
+                                                                                            NumAeast, NumAwest, NumB)
                     Loop -= 1  # time passes when light’s change Else
                     print("changing light because someone is waiting on A road")
             else:
@@ -124,6 +134,9 @@ if __name__ == '__main__':
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         x = 1
                         TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
+                        TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest,
+                                                                                                TimeB, NumAeast,
+                                                                                                NumAwest, NumB)
                         Loop -= 1
                         print("Next on A road has waited four times longer than next on B road, Change light")
                     else:
@@ -135,6 +148,9 @@ if __name__ == '__main__':
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         x = 1
                         TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
+                        TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest,
+                                                                                                TimeB, NumAeast,
+                                                                                                NumAwest, NumB)
                         Loop -= 1
                         print("Next on A road east has waited four times longer than next on B road, Change light")
                     else:
@@ -146,6 +162,9 @@ if __name__ == '__main__':
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         x = 1
                         TimeB, TimeAeast, TimeAwest = addTime(TimeB, TimeAeast, TimeAwest)
+                        TimeAeast, TimeAwest, TimeB, NumAeast, NumAwest, NumB = GenerateNewCars(TimeAeast, TimeAwest,
+                                                                                                TimeB, NumAeast,
+                                                                                                NumAwest, NumB)
                         Loop -= 1
                         print("Next on A road west has waited four times longer than next on B road, Change light")
                     else:
