@@ -50,6 +50,7 @@ if __name__ == '__main__':
     TimeB = []
     Loop = 75  # amount of iterations
     x = 0
+    changeMultiplier = 2.4
     while Loop != 0:
         if x == 1:
             if NumAeast == 0 and NumAwest == 0:  # If no car is on A road, change light
@@ -60,7 +61,7 @@ if __name__ == '__main__':
                     Loop -= 1  # time passes when light’s change
                     print("changing light because someone is waiting on B road")
             elif NumAeast != 0 and NumAwest != 0 and NumB != 0:
-                if TimeB[0] >= 4 * TimeAeast[0] and TimeB[0] >= 4 * TimeAwest[0]:
+                if TimeB[0] >= changeMultiplier * TimeAeast[0] and TimeB[0] >= changeMultiplier * TimeAwest[0]:
                     # if first in B wait time is four times more than first in either part of A road change lights.
                     NumAeast, TimeAeast = moveCarsForward(NumAeast, TimeAeast)
                     NumAwest, TimeAwest = moveCarsForward(NumAwest, TimeAwest)
@@ -118,7 +119,7 @@ if __name__ == '__main__':
                     print("changing light because someone is waiting on A road")
             else:
                 if NumAeast != 0 and NumAwest:
-                    if TimeB[0] * 4 <= TimeAeast[0] or TimeB[0] * 4 <= TimeAwest[0]:
+                    if TimeB[0] * changeMultiplier <= TimeAeast[0] or TimeB[0] * changeMultiplier <= TimeAwest[0]:
                         # if first in A - east or A - west wait time is four times more than first in b change lights.
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         x = 1
@@ -129,7 +130,7 @@ if __name__ == '__main__':
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         print("Green on B road")
                 elif NumAeast != 0:
-                    if TimeB[0] * 4 <= TimeAeast[0]:
+                    if TimeB[0] * changeMultiplier <= TimeAeast[0]:
                         # if first in A - east or A - west wait time is four times more than first in b change lights.
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         x = 1
@@ -140,7 +141,7 @@ if __name__ == '__main__':
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         print("Green on B road")
                 elif NumAwest != 0:
-                    if TimeB[0] * 4 <= TimeAwest[0]:
+                    if TimeB[0] * changeMultiplier <= TimeAwest[0]:
                         # if first in A - east or A - west wait time is four times more than first in b change lights.
                         NumB, TimeB = moveCarsForward(NumB, TimeB)
                         x = 1
